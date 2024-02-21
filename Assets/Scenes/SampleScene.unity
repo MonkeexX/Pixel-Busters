@@ -156,9 +156,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 9.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -166,10 +166,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &18465866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -294,8 +294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71ea5d8edabab54086ada5836d6683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 5
+  movementSpeed: 6
+  jumpForce: 35
+  saltosMaximos: 1
+  saltosRestantes: 0
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &399936164
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +312,7 @@ GameObject:
   - component: {fileID: 399936166}
   - component: {fileID: 399936165}
   - component: {fileID: 399936167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataforma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +534,7 @@ GameObject:
   - component: {fileID: 1685087593}
   - component: {fileID: 1685087592}
   - component: {fileID: 1685087591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

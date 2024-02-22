@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class characterController : MonoBehaviour
 {
-
-    public float movementSpeed = 6.0f;
-    public float jumpForce = 35.0f;
+    const int movementSpeed = 6000;
+    const int jumpForce = 16000;
     public int saltosMaximos = 1;
     public int saltosRestantes;
     public LayerMask capaSuelo;
@@ -27,17 +27,16 @@ public class characterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && saltosRestantes > 0) //Jump input
         {
             saltosRestantes = saltosRestantes - 1;
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.D)) //Right movement
         {
-            GetComponent<Rigidbody2D>().AddForce(Vector2.right * movementSpeed);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.right * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A)) //Left movement
         {
-            GetComponent<Rigidbody2D>().AddForce(-Vector2.right * movementSpeed);
+            GetComponent<Rigidbody2D>().AddForce(-Vector2.right * movementSpeed * Time.deltaTime);
         }
-
         InTheFloor();
     }
 
@@ -48,3 +47,5 @@ public class characterController : MonoBehaviour
         return raycastHit.collider != null;
     }
 }
+
+

@@ -294,8 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71ea5d8edabab54086ada5836d6683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
-  jumpForce: 35
   saltosMaximos: 1
   saltosRestantes: 0
   capaSuelo:

@@ -43,7 +43,7 @@ public class characterController : MonoBehaviour
     bool InTheFloor() //Function to reset the number of jumps
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(GetComponent<BoxCollider2D>().bounds.center, new Vector2(GetComponent<BoxCollider2D>().bounds.size.x, GetComponent<BoxCollider2D>().bounds.size.y), 0f, Vector2.down,
-            0.2f, capaSuelo);
+            0.8f, capaSuelo);
         return raycastHit.collider != null;
     }
 }

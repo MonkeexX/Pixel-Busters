@@ -332,9 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35d8a753c057c64f88027f965551296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  distanceBetween: 0
-  player: {fileID: 18465864}
+  speed: 7
+  detectionRange: 10
 --- !u!50 &347953321
 Rigidbody2D:
   serializedVersion: 4
@@ -422,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347953319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.24, y: -0.96, z: 0}
+  m_LocalPosition: {x: 8.95, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076485282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0, z: 0}
+  m_LocalPosition: {x: 1.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -2,40 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
-    public int speed;
-    private float distance;
-    public float distanceBetween;
+    public int speed = 5;
+    public float detectionRange = 5.0f;
 
-    public GameObject player;
+    private GameObject player;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-
-      
-
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-
-        if (distance > distanceBetween)
+        if (player != null)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
+            if (distanceToPlayer <= detectionRange)
+            {
+                ChasePlayer();
+                detectionRange = 1000.0f;
+            }
         }
+        else
+        {
+            Patrol();
+        }
+    }
+
+    void Patrol()
+    {
+        // Aquí iría el código de patrullaje si se desea añadir en el futuro
+    }
+
+    void ChasePlayer()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        if (player.transform.position.x > transform.position.x || player.transform.position.x < transform.position.x)
+        {
+            Flip();
+        }
+    }
+
+    void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")) 
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
         }

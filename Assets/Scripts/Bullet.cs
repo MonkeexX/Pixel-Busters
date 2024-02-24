@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Floor"))
+        else if (collision.gameObject.tag != ("Player"))
         {
             Destroy(gameObject);
         }

@@ -18,12 +18,13 @@ public class PlayerShoot : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1")) 
         {
-            Disparar();
+            Shoot();
         }
     }
 
-    private void Disparar()
+    private void Shoot()
     {
-        Instantiate(bullet, controladorDisparo.position, controladorDisparo.rotation);
+        GameObject NewBullet = Instantiate(bullet, controladorDisparo.position, controladorDisparo.rotation);
+        Destroy(NewBullet.gameObject, 1.0f);
     }
 }

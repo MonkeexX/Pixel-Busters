@@ -6,18 +6,19 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float velocidad;
     [SerializeField] private float daño;
+    public bool isFlipped = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-            transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+        transform.Translate(Vector2.right * velocidad * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

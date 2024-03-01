@@ -292,14 +292,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 18465864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71ea5d8edabab54086ada5836d6683b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8644d33345e77614ba3ace9c18398d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saltosMaximos: 1
-  saltosRestantes: 0
-  capaSuelo:
-    serializedVersion: 2
-    m_Bits: 256
+  controller: {fileID: 0}
+  runSpeed: 40
 --- !u!1 &347953319
 GameObject:
   m_ObjectHideFlags: 0

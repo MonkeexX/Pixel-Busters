@@ -11,7 +11,6 @@ public class characterController : MonoBehaviour
     [SerializeField] private float m_JumpForce = 400f;
     [Range(0, 0.3f)][SerializeField] private float m_MovementSmoothing = 0.05f;
     [SerializeField] private bool m_AirControl = false;
-    SpriteRenderer spriteFlip;
     [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform m_GroundCheck;
     [SerializeField] private Transform m_WallCheck;
@@ -40,6 +39,8 @@ public class characterController : MonoBehaviour
     private float jumpWallStartX = 0.0f;
     private float jumpWallDistX = 0.0f;
     private bool limitVelOnWallJump = false;
+
+    public GameObject bullet;
 
     [Header("Events")]
     [Space]

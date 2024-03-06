@@ -8,8 +8,6 @@ public class characterHealth_and_Damage : MonoBehaviour
     
     public void RestHealth(int quantity)
     {
-        health = quantity -1;
+        health -= quantity;
     }
-
-  
 }

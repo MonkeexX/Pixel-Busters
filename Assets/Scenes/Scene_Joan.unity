@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 18465870}
   - component: {fileID: 18465869}
   - component: {fileID: 18465871}
-  - component: {fileID: 18465872}
   m_Layer: 1
   m_Name: Dixon
   m_TagString: Player
@@ -254,7 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71ea5d8edabab54086ada5836d6683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 850
+  health: 100
+  m_JumpForce: 10
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -266,7 +266,6 @@ MonoBehaviour:
   m_DashForce: 25
   life: 10
   invincible: 0
-  bullet: {fileID: 0}
   OnFallEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -322,19 +321,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.28, y: 1.28}
   m_Direction: 0
---- !u!114 &18465872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18465864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1090691ab616b83478f83483ea3a43ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!1 &92205292
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controladorDisparo: {fileID: 92205293}
   bullet: {fileID: 9080541578639076010, guid: d4b7989aec766fe4db682b018702b7e6, type: 3}
+  intervaloDisparo: 5
 --- !u!1 &347953319
 GameObject:
   m_ObjectHideFlags: 0

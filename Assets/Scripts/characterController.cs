@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class characterController : MonoBehaviour
 {
+    public int health = 100;
     [SerializeField] private float m_JumpForce = 400f;
     [Range(0, 0.3f)][SerializeField] private float m_MovementSmoothing = 0.05f;
     [SerializeField] private bool m_AirControl = false;
@@ -39,8 +40,6 @@ public class characterController : MonoBehaviour
     private float jumpWallStartX = 0.0f;
     private float jumpWallDistX = 0.0f;
     private bool limitVelOnWallJump = false;
-
-    public GameObject bullet;
 
     [Header("Events")]
     [Space]

@@ -1,17 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] private Transform groundChecker;
     public int speed = 5;
+    [SerializeField] private float distance;
     public float detectionRange = 5.0f;
+    private Rigidbody2D rb;
+    [SerializeField] private bool isFacingRight = true;
+    [SerializeField] private bool rightMove;
 
+    public bool isChasing = false;
+    public bool isOnPatrol;
     private GameObject player;
+
+    private Vector3 startPoint;
+    private Vector3 endPoint;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+
+        startPoint = transform.position;
+        endPoint = startPoint + Vector3.right * 5f; // Define un punto final para la patrulla
     }
 
     void Update()
@@ -23,35 +39,57 @@ public class EnemyScript : MonoBehaviour
             if (distanceToPlayer <= detectionRange)
             {
                 ChasePlayer();
-                detectionRange = 1000.0f;
+                isChasing = true;
+                isOnPatrol = false;
+            }
+            else
+            {
+                Patrol();
+                isOnPatrol = true;
+                isChasing = false;
             }
         }
         else
         {
             Patrol();
+            isOnPatrol = true;
+            isChasing = false;
         }
     }
 
     void Patrol()
     {
-        // Aquí iría el código de patrullaje si se desea añadir en el futuro
+        if (transform.position.x >= endPoint.x)
+        {
+            isFacingRight = false;
+        }
+        else if (transform.position.x <= startPoint.x)
+        {
+            isFacingRight = true;
+        }
+
+        if (isFacingRight)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
     }
 
     void ChasePlayer()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-
-        if (player.transform.position.x > transform.position.x || player.transform.position.x < transform.position.x)
+        if (isOnPatrol == false && isChasing == true)
         {
-            Flip();
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
 
     void Flip()
     {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,5 +98,16 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Muro"))
+        {
+            Flip();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(groundChecker.transform.position, groundChecker.transform.position + Vector3.down * distance);
     }
 }

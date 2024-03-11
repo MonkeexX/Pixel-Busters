@@ -251,7 +251,7 @@ public class characterController : MonoBehaviour
     IEnumerator DashCooldown()
     {
         isDashing = true;
-        canDash = true;
+        canDash = false;
         yield return new WaitForSeconds(0.1f);
         isDashing = false;
         yield return new WaitForSeconds(0.5f);

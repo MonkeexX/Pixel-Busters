@@ -1045,5 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c2719b685af17498e30a9d4a0e667f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 18465872}
   controladorDisparo: {fileID: 2076485283}
   bullet: {fileID: 9080541578639076010, guid: 14eca2491ce346c4bb1035bb4b5ac59e, type: 3}
